@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Pokemon, PokemonData} from "../../shared/models/pokemon.model";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,13 @@ import {Observable} from "rxjs";
 export class PokemonService {
 
   private readonly apiUrl = environment.apiUrl;
+  public reloadPreview = new Subject();
 
   constructor(private http: HttpClient) {
   }
 
-  public getListOfPokemon(): Observable<PokemonData> {
-    return this.http.get<PokemonData>(`${this.apiUrl}`, {responseType: 'json'});
+  public getListOfPokemon(params): Observable<PokemonData> {
+    return this.http.get<PokemonData>(`${this.apiUrl}`, {params, responseType: 'json'});
   }
 
   public getPokemonDetails(name: string): Observable<Pokemon> {

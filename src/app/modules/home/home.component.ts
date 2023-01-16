@@ -5,6 +5,7 @@ import {distinctUntilChanged, merge, startWith, switchMap, tap} from "rxjs";
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-home',
@@ -18,8 +19,8 @@ export class HomeComponent implements OnInit {
 
   isLoading: boolean = true;
 
-  activePokemon: Pokemon;
-  pageSizeOptions = [5, 10, 15, 20];
+  selectedPokemonName = new FormControl('');
+  pageSizeOptions = [10, 15, 20];
   pokemonCount = 0;
   pokemon: Pokemon[] = [];
   dataSource: MatTableDataSource<Pokemon>;
@@ -40,12 +41,13 @@ export class HomeComponent implements OnInit {
       tap(() => this.isLoading = true),
       switchMap(() => {
         const params = {
-          sortBy: this.sort.active ? `${this.sort.active} ${this.sort.direction}` : null,
-          pageSize: this.paginator.pageSize,
-          page: this.paginator.pageIndex + 1,
+          offset: this.paginator.pageIndex + 1,
+          limit: this.paginator.pageSize ? this.paginator.pageSize : 10
         };
-        return this.pokemonService.getListOfPokemon();
+
+        return this.pokemonService.getListOfPokemon(params);
       })
+
     ).subscribe({
       next: res => {
         this.pokemon = res.results;
@@ -67,22 +69,8 @@ export class HomeComponent implements OnInit {
     this.dataSource.data.forEach(pokemon => {
       pokemon.isActive = false;
     });
-    this.getPokemonDetails(element);
+
+    element.isActive = true;
+    this.selectedPokemonName.setValue(element.name);
   }
-
-  getPokemonDetails(pokemon: Pokemon): void {
-    pokemon.isActive = true;
-    this.pokemonService.getPokemonDetails(pokemon.name).subscribe({
-      next: (res) => {
-        this.activePokemon = res;
-      },
-      error: (err) => {
-
-      },
-      complete: () => {
-
-      }
-    });
-  }
-
 }

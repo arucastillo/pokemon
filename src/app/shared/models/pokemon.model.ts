@@ -21,11 +21,17 @@ export interface Pokemon{
   past_types: [];
   species: Details;
   sprites: Sprites;
-  stats: any;
+  stats: Stats[];
   types: any;
   weight: number;
   url?: string;
   isActive?: boolean;
+}
+
+export interface Stats{
+  base_stat: number;
+  effort: number;
+  stat: Details;
 }
 
 export interface Sprites{
@@ -58,6 +64,7 @@ export interface GameIndices{
 
 export interface Details{
   name: string;
+  ability?: Details;
   url: string;
   is_hidden?: boolean;
   slot?: number;

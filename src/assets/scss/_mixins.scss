@@ -11,43 +11,7 @@
         box-shadow:inset $horizontal $vertical $blur $spread $color;
     } @else {
         -webkit-box-shadow: $horizontal $vertical $blur $spread  $color;
-        -moz-box-shadow: $horizontal $vertical $blur $spread  $color; 
+        -moz-box-shadow: $horizontal $vertical $blur $spread  $color;
         box-shadow: $horizontal $vertical $blur $spread $color;
     }
-}
-
-// Linear Gradient
-@mixin linearGradient($top, $bottom){
-    background: $top; /* Old browsers */
-    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-}
-
-// Transform X & Y
-@mixin translate($val, $val1){ //@include translate(-50%, -50%);
-    -webkit-transform: translate($val, $val1);
-    -moz-transform: translate($val, $val1);
-    -o-transform:translate($val, $val1);
-    transform: translate($val, $val1);
-}
-
-// Transform Y
-@mixin translateY($val){ //@include translate(-50%, -50%);
-    -webkit-transform: translatey($val);
-    -moz-transform: translatey($val);
-    -o-transform:translatey($val);
-    transform: translatey($val);
-}
-
-// Transform X
-@mixin translateX($val){ //@include translate(-50%, -50%);
-    -webkit-transform: translatex($val);
-    -moz-transform: translatex($val);
-    -o-transform:translatex($val);
-    transform: translatex($val);
 }

@@ -11,6 +11,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSortModule} from "@angular/material/sort";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {PokemonDetailsComponent} from './components/pokemon-details/pokemon-details.component';
 
@@ -19,7 +22,8 @@ const MAT_MODULES = [
   MatPaginatorModule,
   MatSortModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Pokemon, PokemonData} from "../../shared/models/pokemon.model";
@@ -10,7 +10,6 @@ import {Observable, Subject} from "rxjs";
 export class PokemonService {
 
   private readonly apiUrl = environment.apiUrl;
-  public reloadPreview = new Subject();
 
   constructor(private http: HttpClient) {
   }

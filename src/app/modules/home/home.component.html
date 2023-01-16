@@ -5,13 +5,26 @@
         <section class="poke-card mx-auto mt-4">
           <header class="poke-card-header d-flex align-items-center justify-content-between">
             <h2 class="h4">List of Pokemon</h2>
+
+            <div class="col-md-4 d-flex align-items-center pr-0">
+              <input type="text" [formControl]="name" class="form-control validate"
+                     placeholder="Enter Pokemon Name"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto [displayWith]="displayFn" (optionSelected)="showPreview($event.option.value)">
+                <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
+                  {{item.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+
           </header>
+
 
           <table mat-table matSort [dataSource]="dataSource">
             <!-- Name Column -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.name | titlecase}} </td>
             </ng-container>
 
             <ng-container matColumnDef="actions">

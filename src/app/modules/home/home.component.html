@@ -5,18 +5,6 @@
         <section class="poke-card mx-auto mt-4">
           <header class="poke-card-header d-flex align-items-center justify-content-between">
             <h2 class="h4">List of Pokemon</h2>
-
-            <div class="col-md-4 d-flex align-items-center pr-0">
-              <input type="text" [formControl]="name" class="form-control validate"
-                     placeholder="Enter Pokemon Name"
-                     [matAutocomplete]="auto">
-              <mat-autocomplete #auto [displayWith]="displayFn" (optionSelected)="showPreview($event.option.value)">
-                <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
-                  {{item.name}}
-                </mat-option>
-              </mat-autocomplete>
-            </div>
-
           </header>
 
 
@@ -64,6 +52,16 @@
         <section class="poke-card mx-auto mt-4">
           <header class="poke-card-header d-flex align-items-center justify-content-between">
             <h2 class="h4">Pokemon Details</h2>
+            <div class="col-md-4 d-flex align-items-center pr-0">
+              <input type="text" [formControl]="name" class="form-control validate"
+                     placeholder="Enter Pokemon Name"
+                     [matAutocomplete]="auto">
+              <mat-autocomplete #auto [displayWith]="displayFn" (optionSelected)="showPreview($event.option.value)">
+                <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
+                  {{item.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
           </header>
 
           <app-pokemon-details [pokemonName]="selectedPokemonName.valueChanges | async"></app-pokemon-details>
@@ -75,7 +73,7 @@
       <div class="col-md-12 grid-margin">
         <section class="poke-card mx-auto mt-4">
           <header class="poke-card-header d-flex align-items-center justify-content-between">
-            <h2 class="h4">List of Pokemon</h2>
+            <h2 class="h4">Count Of Pokemon By Letter</h2>
           </header>
 
         </section>

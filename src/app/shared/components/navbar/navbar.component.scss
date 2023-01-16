@@ -1,0 +1,30 @@
+@import 'variables';
+
+#top-navbar.hidden {
+  display: none;
+}
+
+.top-navbar {
+  z-index: 1000 !important;
+}
+
+
+.navbar {
+  padding-left: 30px;
+  padding-right: 30px;
+  min-height: 64px;
+}
+
+.navbar-bg {
+  background-color: $white;
+}
+
+.navbar-brand {
+  flex: 0 1 8rem;
+
+  .logo {
+    width: auto;
+    max-width: 100%;
+    max-height: 50px;
+  }
+}

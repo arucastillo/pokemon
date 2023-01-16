@@ -1,0 +1,44 @@
+@import 'variables';
+@import 'mixins';
+
+.pokemon-container {
+  padding: 15px 30px;
+  min-height: calc(100vh - 64px);
+}
+
+.pokemon-container.no-height {
+  min-height: 0;
+}
+
+.poke-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.poke-card {
+  border: 1px solid $white;
+  border-radius: 5px;
+  background-color: $white;
+  padding: 0 15px;
+  @include box-shadow(0px, 2px, 6px, 0px, rgba(0, 0, 0, 0.1));
+  display: flex;
+  flex-direction: column;
+
+  .poke-card-header {
+    border-bottom: 1px solid $contrast-s;
+    padding: 10px 0;
+    color: $default;
+  }
+
+  .poke-card-content {
+    flex: 1 0 auto;
+  }
+
+  .poke-card-footer {
+    border-top: 1px solid $contrast-s;
+    padding: 10px 0;
+  }
+}

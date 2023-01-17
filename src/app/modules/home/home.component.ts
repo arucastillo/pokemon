@@ -36,6 +36,9 @@ export class HomeComponent implements OnInit {
   dataSource: MatTableDataSource<Pokemon>;
   displayedColumns: string[] = [];
 
+  abecedary = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  displayedCountColumns = ['letter', 'count']
+
   constructor(private pokemonService: PokemonService) {
 
   }
@@ -110,5 +113,9 @@ export class HomeComponent implements OnInit {
 
   displayFn(field: Pokemon): string {
     return field && field.name ? field.name : '';
+  }
+
+  countOccurrence(value) {
+    return this.allPokemon.map(pokemon => pokemon.name[0]).filter((v) => (v === value)).length;
   }
 }

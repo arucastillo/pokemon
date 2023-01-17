@@ -16,7 +16,7 @@ export class PokemonDetailsComponent implements OnInit, OnChanges {
   pokemon: Pokemon;
   type: string;
 
-  constructor(private pokemonService: PokemonService,  private titleCasePipe: TitleCasePipe) {
+  constructor(private pokemonService: PokemonService, private titleCasePipe: TitleCasePipe) {
 
   }
 
@@ -35,12 +35,12 @@ export class PokemonDetailsComponent implements OnInit, OnChanges {
       next: (res) => {
         this.pokemon = res;
       },
-      error: (err) => {
+      error: () => {
 
       },
       complete: () => {
         if (this.pokemon.types.length > 1) {
-          this.type =  `${this.titleCasePipe.transform(this.pokemon.types[0].type.name)} / ${this.titleCasePipe.transform(this.pokemon.types[1].type.name)}`
+          this.type = `${this.titleCasePipe.transform(this.pokemon.types[0].type.name)} / ${this.titleCasePipe.transform(this.pokemon.types[1].type.name)}`
         } else {
           this.type = this.titleCasePipe.transform(this.pokemon.types[0].type.name);
         }

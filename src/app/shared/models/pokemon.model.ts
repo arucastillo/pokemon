@@ -1,11 +1,11 @@
-export interface PokemonData{
- count: number;
- next: string;
- previous: string;
- results: Pokemon[];
+export interface PokemonData {
+  count: number;
+  next: string;
+  previous: string;
+  results: Pokemon[];
 }
 
-export interface Pokemon{
+export interface Pokemon {
   abilities?: Details[];
   base_experience: number;
   forms: Details[];
@@ -28,13 +28,13 @@ export interface Pokemon{
   isActive?: boolean;
 }
 
-export interface Stats{
+export interface Stats {
   base_stat: number;
   effort: number;
   stat: Details;
 }
 
-export interface Sprites{
+export interface Sprites {
   back_default: string;
   back_female: string;
   back_shiny: string;
@@ -46,23 +46,23 @@ export interface Sprites{
   versions: any;
 }
 
-export interface Moves{
+export interface Moves {
   move: Details;
   version_group_details: VersionGroupDetails[];
 }
 
-export interface VersionGroupDetails{
+export interface VersionGroupDetails {
   level_learned_at: number;
   move_learn_method: Details;
   version_group: Details;
 }
 
-export interface GameIndices{
+export interface GameIndices {
   game_index: number;
   version: Details;
 }
 
-export interface Details{
+export interface Details {
   name: string;
   ability?: Details;
   url: string;

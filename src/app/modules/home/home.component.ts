@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {PokemonService} from "../../core/services/pokemon.service";
 import {Pokemon} from "../../shared/models/pokemon.model";
-import {debounceTime, distinctUntilChanged, map, merge, Observable, startWith, switchMap, tap} from "rxjs";
+import {distinctUntilChanged, map, merge, Observable, startWith, switchMap, tap} from "rxjs";
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   dataSource: MatTableDataSource<Pokemon>;
   displayedColumns: string[] = [];
 
-  abecedary = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  abecedary = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   displayedCountColumns = ['letter', 'count']
 
   constructor(private pokemonService: PokemonService) {
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
 
         this.getAllPokemon(params);
       },
-      error: err => {
+      error: () => {
         this.isLoading = false;
       }
     });
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.allPokemon = res.results;
       },
-      error: (err) => {
+      error: () => {
         this.isLoading = false;
       },
       complete: () => {
